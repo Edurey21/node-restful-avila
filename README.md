@@ -24,7 +24,7 @@ Asegúrate tambien de tener instalado el XAMPP.
 1. Clonar el repositorio en la máquina local:
    
    ```sh
-   git clone 
+   git clone https://github.com/Edurey21/Estelar-Odyssey.git
    ```
 
 2. Navegar al directorio del proyecto:
