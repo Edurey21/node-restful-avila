@@ -1,24 +1,36 @@
 const PlanetasModel = require('../models/planetas');
 
 
+
 class PlanetasController {
-    static async indexGet(req, res){
+    static async indexGet(req, res) {
         let data = await PlanetasModel.consultar();
         res.send(data);
     }
 
 
+
     
+
+    static async itemGet(req, res) {
+        let id = req.params.id;
+        let data = await PlanetasModel.consultarPorId(id);
+        if (data.length == 0) {
+            res.status(404).send({errno: 404, error: 'Not found'});
+            return;
+        }
+        res.send(data[0]);
+    }
+
+
+
+
+
     static async agregar(req, res){
        
         try {
 
-            let data = await PlanetasModel.agregarPlaneta(req.body)
-            // if (data.length == 0){
-            //     res.status(404).send({code: 404, message:'not found'});
-            // }
-            // res.send(data);
-
+            let data = await PlanetasModel.agregar(req.body)
             data = await PlanetasModel.consultarPorId(data[0]);
             if (data.length == 0){
                 res.status(404).send({code: 404, message:'not found'});
@@ -28,9 +40,54 @@ class PlanetasController {
                            res.status(404).send({code: 404, message:error.sqlMessage});
  
         }
-        
+    }
+
+
+
+
+
+    static async editar(req, res){
        
+        try {
+
+            let data = await PlanetasModel.editar(req.params.id,req.body)
+            
+            data = await PlanetasModel.consultarPorId(req.params.id);
+            if (data.length == 0){
+                res.status(404).send({code: 404, message:'not found'});
+            }
+            res.send(data[0]);
+        } catch (error) {
+            res.status(404).send({code: 404, message:error.sqlMessage});
+ 
+        }     
+    }
+    
+
+
+
+
+    static async itemPatch(req, res) {
+        try {
+            const id = req.params.id;
+            const updatedFields = req.body;
+
+            const result = await PlanetasModel.actualizar(id, updatedFields);
+
+            if (result === 0) {
+                res.status(404).send({ errno: 404, error: 'Not found' });
+            } else {
+                res.send({ message: 'Successfull partial update'});
+            }
+        } catch (error) {
+            console.error(error);
+            res.status(400).send({ errno: 400, error: 'Bad Request' });
+        }
     }
 }
+
+
+
+
 
 module.exports = PlanetasController;

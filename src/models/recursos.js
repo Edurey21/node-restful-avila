@@ -10,17 +10,22 @@ class RecursosModel {
         return await db('recursos').where('id_recurso', id);
     }
     
-    static async agregarRecurso(nombre,res){
-        if (!nombre){
-            return res.json({success:false, 
-                message:'Un error a ocurido, Porfavor intente más tarde'});
-        }
-        db('recursos')
-        .insert({nombre})
-        .catch((err)=>{
-            console.log(err);
-            return res.json({success:false, message:'Un error a ocurido, Porfavor intente más tarde'});
-        });
+    static async agregar(recursos) {
+        let query = db('recursos').insert(recursos)
+        return await query;
+    }
+
+
+    static async editar(id,recursos) {
+        let query = db('recursos')
+        .where({ id_recurso: id })
+        .update(recursos)
+        return await query;
+    }
+
+
+    static async actualizar(id_recurso, campos) {
+        return await db('recursos').where('id_recurso', id_recurso).update(campos);
     }
 }
 
