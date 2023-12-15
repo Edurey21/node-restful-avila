@@ -7,10 +7,12 @@ de endpoints disponibles con enlaces a sus respectivas documentaciones detallada
 
 | Recurso                    | Descripción |
 | -------------------------- | ----------- |
-| `GET /temas`               | Recupera la lista de todos los temas disponibles. |
-| [`GET /temas/{id}`](./endpoints//get-temas-id.md)          | Obtiene información detallada sobre un tema específico. |
-| [`GET /temas/{id}/libros`](./endpoints/get-temas-id-libros.md)   | Obtiene la lista de libros asociados a un tema específico. |
-| `GET /libros`              | Recupera la lista de todos los libros disponibles. |
-| `GET /libros/{id}/autores` | Obtiene la lista de autores de un libro específico. |
-| `GET /autores`             | Recupera la lista de todos los autores disponibles. |
-| `GET /autores/{id}`        | Obtiene información detallada sobre un autor específico. |
+| [`GET /planetas`](./endpoints/get-planetas.md)               | Recupera la lista de todos los planetas disponibles. |
+| [`GET /planetas/{id}`](./endpoints//get-planetas-id.md)          | Obtiene información detallada sobre un planeta específico. |
+| [`GET /naves_espaciales`](./endpoints/get-naves_espaciales.md)             | Recupera la lista de todas las naves espaciales disponibles.|
+| [`GET /recursos` ](./endpoints/get-recursos.md)            | Recupera la lista de todos los recursos disponibles. |
+| [`GET /misiones`](./endpoints/get-misiones.md)        | Recupera la lista de todas las misiones disponibles. |
+| [`POST /planetas`](./endpoints/post-planetas.md)        | Crea un nuevo planeta. |
+| [`POST /naves_espaciales`](./endpoints/post-naves_espaciales.md)        | Crea un nuevo planeta. |
+| [`POST /recursos`](./endpoints/post-recursos.md)        | Crea una nueva nave espacial. |
+| [`POST /misiones`](./endpoints/post-misiones.md)        | Crea un nuevo recurso. |
